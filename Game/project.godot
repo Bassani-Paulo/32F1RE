@@ -8,10 +8,20 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Enums",
+"language": "GDScript",
+"path": "res://BuyPhase.gd"
+} ]
+_global_script_class_icons={
+"Enums": ""
+}
+
 [application]
 
 config/name="32F1RE"
-run/main_scene="res://MainGameScene.tscn"
+run/main_scene="res://Scenes/MainGameScene.tscn"
 config/icon="res://icon.png"
 
 [display]

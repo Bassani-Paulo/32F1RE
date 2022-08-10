@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ttf/Hack-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://StoreScene.gd" type="Script" id=2]
-[ext_resource path="res://ItemIconScene.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/StoreScene.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/ItemIconScene.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 21
@@ -39,26 +39,18 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer2"]
-margin_left = 396.0
-margin_top = 640.0
-margin_right = 404.0
-margin_bottom = 640.0
+margin_left = 60.0
+margin_top = 520.0
+margin_right = 740.0
+margin_bottom = 760.0
+custom_constants/separation = 40
 
 [node name="ItemIconScene" parent="CenterContainer2/HBoxContainer" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_bottom = 0.0
 
 [node name="ItemIconScene2" parent="CenterContainer2/HBoxContainer" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 4.0
-margin_right = 4.0
-margin_bottom = 0.0
+margin_left = 240.0
+margin_right = 440.0
 
 [node name="ItemIconScene3" parent="CenterContainer2/HBoxContainer" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 8.0
-margin_right = 8.0
-margin_bottom = 0.0
+margin_left = 480.0
+margin_right = 680.0

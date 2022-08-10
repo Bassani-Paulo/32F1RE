@@ -7,14 +7,23 @@ size = 18
 font_data = ExtResource( 1 )
 
 [node name="ItemIconScene" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = -640.0
+margin_right = 200.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 200, 240 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureButton" type="TextureButton" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -40.0
+rect_min_size = Vector2( 200, 200 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TextureButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -29,7 +38,6 @@ anchor_bottom = 1.0
 margin_left = -55.0
 margin_top = -22.0
 margin_right = 55.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Item Title"
 align = 1
