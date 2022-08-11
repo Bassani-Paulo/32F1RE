@@ -12,10 +12,22 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Enums",
 "language": "GDScript",
-"path": "res://BuyPhase.gd"
+"path": "res://Classes/Enums.gd"
+}, {
+"base": "Object",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Classes/Item.gd"
+}, {
+"base": "Object",
+"class": "StatMod",
+"language": "GDScript",
+"path": "res://Classes/StatMod.gd"
 } ]
 _global_script_class_icons={
-"Enums": ""
+"Enums": "",
+"Item": "",
+"StatMod": ""
 }
 
 [application]

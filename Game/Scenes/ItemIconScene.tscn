@@ -1,6 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ttf/Hack-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/ItemIconScene.gd" type="Script" id=2]
+
+[sub_resource type="OpenSimplexNoise" id=2]
+
+[sub_resource type="NoiseTexture" id=3]
+flags = 37
+width = 200
+height = 200
+noise = SubResource( 2 )
+
+[sub_resource type="AnimatedTexture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -10,6 +21,7 @@ font_data = ExtResource( 1 )
 margin_right = 200.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 200, 240 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -19,13 +31,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -40.0
 rect_min_size = Vector2( 200, 200 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="TextureButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -4,16 +4,14 @@ extends Control
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-onready var instructionsLabel = $CenterContainer/InstructionsLabel
+onready var instructionsLabel = $VBoxContainer/CenterContainer/InstructionsLabel
 var instructionsLabelText: String = ""
-const enums = preload("res://Scripts/Enums.gd")
 
-func init(buyPhase:int):
-	match buyPhase:
-		enums.BuyPhases.GUNSLINGER:
-			instructionsLabelText = "Choose a gunslinger"
-		_:
-			instructionsLabelText = "Opted not for gunslinger"
+func setup(instructions:String, item1:Item, item2:Item, item3:Item):
+	instructionsLabelText = instructions
+	get_node("CenterContainer2/HBoxContainer/ItemIconScene1").setup(item1)
+	get_node("CenterContainer2/HBoxContainer/ItemIconScene2").setup(item2)
+	get_node("CenterContainer2/HBoxContainer/ItemIconScene3").setup(item3)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	instructionsLabel.text = instructionsLabelText
