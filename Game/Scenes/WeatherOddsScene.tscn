@@ -1,13 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://White_Circle.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/WeatherOddsScene.gd" type="Script" id=2]
 
 [node name="WeatherOddsScene" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_min_size = Vector2( 60, 80 )
+script = ExtResource( 2 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -19,8 +18,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer"]
-margin_right = 54.0
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 162.0
+margin_bottom = 50.0
+
+[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer/CenterContainer"]
+margin_left = 56.0
+margin_right = 106.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 value = 50.0
@@ -32,7 +36,7 @@ tint_progress = Color( 0.415686, 0.388235, 0.298039, 1 )
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_top = 60.0
-margin_right = 54.0
+margin_right = 162.0
 margin_bottom = 74.0
-text = "Weather"
+text = "Weather can be very long"
 align = 1

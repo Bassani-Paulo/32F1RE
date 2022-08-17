@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://Classes/Item.gd"
 }, {
 "base": "Object",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Classes/Player.gd"
+}, {
+"base": "Object",
 "class": "StatMod",
 "language": "GDScript",
 "path": "res://Classes/StatMod.gd"
@@ -27,6 +32,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Enums": "",
 "Item": "",
+"Player": "",
 "StatMod": ""
 }
 
