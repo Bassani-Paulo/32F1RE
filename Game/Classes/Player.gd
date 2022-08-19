@@ -14,8 +14,24 @@ var ammoCapacity:int
 var bulletSpeed:float
 var failChance:float
 
+var playerState:int
+var reactionTimeRemaining:float
+var reloadTimeRemaining:float
+var repairTimeRemaining:float
+var rofTimeRemaining:float
+var deathTimeRemaining:float
+var ammoRemaining:int
+
+
 func _init(nameI:String):
 	name = nameI
+	playerState = Enums.PlayerState.REACTING
+	reactionTimeRemaining = reactionTime
+	reloadTimeRemaining = 0
+	repairTimeRemaining = 0
+	rofTimeRemaining = 0
+	deathTimeRemaining = -1
+	ammoRemaining = ammoCapacity
 
 func setStat(statMod:StatMod):
 	match statMod.stat:
@@ -70,11 +86,11 @@ func setStat(statMod:StatMod):
 		Enums.Stat.AMMO_CAPACITY:
 			match statMod.operation:
 				Enums.Operation.SET:
-					ammoCapacity = statMod.value
+					ammoCapacity = int(statMod.value)
 				Enums.Operation.ADD:
-					ammoCapacity += statMod.value
+					ammoCapacity += int(statMod.value)
 				Enums.Operation.MULTIPLY:
-					ammoCapacity *= statMod.value
+					ammoCapacity *= int(statMod.value)
 		Enums.Stat.BULLET_SPEED:
 			match statMod.operation:
 				Enums.Operation.SET:

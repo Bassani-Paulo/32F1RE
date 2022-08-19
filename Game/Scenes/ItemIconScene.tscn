@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://ttf/Hack-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/Hack-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/ItemIconScene.gd" type="Script" id=2]
 
 [sub_resource type="OpenSimplexNoise" id=2]

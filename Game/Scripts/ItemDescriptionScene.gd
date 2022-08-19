@@ -18,7 +18,7 @@ func setup(itemI:Item):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var font = DynamicFont.new()
-	font.font_data = load("res://ttf/Hack-Bold.ttf")
+	font.font_data = load("res://Fonts/Hack-Bold.ttf")
 	font.size = 36
 	get_node("VBoxContainer/MarginContainer3/ItemIconScene/VBoxContainer/ItemTitle").add_font_override("font", font)
 	

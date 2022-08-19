@@ -12,6 +12,12 @@ enum BuyPhases{
 	BUFF
 }
 
+enum Weather{
+	CLEAR
+	SANDSTORM
+	RAIN
+}
+
 enum Stat{
 	SIZE
 	REACTION_TIME
@@ -28,4 +34,13 @@ enum Operation{
 	SET
 	ADD
 	MULTIPLY
+}
+
+enum PlayerState{
+	READY
+	REACTING
+	SHOOTING
+	RELOADING
+	REPARING
+	DEAD
 }

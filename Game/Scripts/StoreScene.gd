@@ -13,8 +13,11 @@ func setup(instructions:String, item1:Item, item2:Item, item3:Item, clearOdds:in
 	get_node("CenterContainer2/HBoxContainer/ItemIconScene2").setup(item2)
 	get_node("CenterContainer2/HBoxContainer/ItemIconScene3").setup(item3)
 	get_node("VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer/ClearOddsScene").setWeather("Clear", clearOdds)
+	get_node("VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer/ClearOddsScene/VBoxContainer/CenterContainer/TextureProgress").tint_progress = Color("c39425")
 	get_node("VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer/SandstormOddsScene").setWeather("Sandstorm", sandstormOdds)
+	get_node("VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer/SandstormOddsScene/VBoxContainer/CenterContainer/TextureProgress").tint_progress = Color("6a634c")
 	get_node("VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer/RainOddsScene").setWeather("Rain", rainOdds)
+	get_node("VBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer/RainOddsScene/VBoxContainer/CenterContainer/TextureProgress").tint_progress = Color("2261c4")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	instructionsLabel.text = instructionsLabelText

@@ -92,9 +92,19 @@ func loadItemScene(item:int):
 	confirmButton.connect("pressed", self, "_on_confirmButton_pressed")
 
 func loadShowdownScene():
-	player.printStats()
-	randomAI.printStats()
 	remove_child(currentScene)
+	previousScene = currentScene
+	currentScene = load("res://Scenes/ShowdownScene.tscn").instance()
+	rng.randomize()
+	var weather = rng.randf()
+	if weather < clearOdds/100.0:
+		weather = Enums.Weather.CLEAR
+	elif weather < clearOdds/100.0 + sandstormOdds/100.0:
+		weather = Enums.Weather.SANDSTORM
+	else:
+		weather = Enums.Weather.RAIN
+	currentScene.setup(weather, player, randomAI)
+	add_child(currentScene)
 
 
 
