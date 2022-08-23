@@ -1,15 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/Hack-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/ItemIconScene.gd" type="Script" id=2]
-
-[sub_resource type="OpenSimplexNoise" id=2]
-
-[sub_resource type="NoiseTexture" id=3]
-flags = 37
-width = 200
-height = 200
-noise = SubResource( 2 )
+[ext_resource path="res://texture.tres" type="Texture" id=3]
 
 [sub_resource type="AnimatedTexture" id=4]
 
@@ -38,7 +31,7 @@ __meta__ = {
 margin_right = 200.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
-texture_normal = SubResource( 3 )
+texture_normal = ExtResource( 3 )
 texture_pressed = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false

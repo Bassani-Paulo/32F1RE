@@ -13,8 +13,10 @@ var rof:float
 var ammoCapacity:int
 var bulletSpeed:float
 var failChance:float
+#var aimTime:float ???
 
 var playerState:int
+
 var reactionTimeRemaining:float
 var reloadTimeRemaining:float
 var repairTimeRemaining:float
@@ -25,6 +27,8 @@ var ammoRemaining:int
 
 func _init(nameI:String):
 	name = nameI
+
+func setup():
 	playerState = Enums.PlayerState.REACTING
 	reactionTimeRemaining = reactionTime
 	reloadTimeRemaining = 0
