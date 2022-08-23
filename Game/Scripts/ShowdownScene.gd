@@ -1,6 +1,6 @@
 extends Control
 
-const TU = 0.001
+const TU = 0.05
 
 const shotSlangs = ["Bang", "Boom", "Pow", "Pew"]
 
@@ -173,6 +173,7 @@ func shotAnimation():
 	rng.randomize()
 	get_node("VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/LogLabel").text = shotSlangs[rng.randi_range(0,3)]
 	get_node("ShotAnimationTime").start()
+	print("animation")
 	
 
 

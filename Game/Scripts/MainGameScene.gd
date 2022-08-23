@@ -16,11 +16,16 @@ var itemsOnSale:Array
 var player = Player.new("Player")
 var randomAI = Player.new("Enemy")
 
-
-
+var itemsFile = File.new()
+var items:Array
 
 
 func _ready():
+	
+	itemsFile.open("res://items.json", itemsFile.READ)
+	items = parse_json(itemsFile.get_as_text())
+	itemsFile.close()
+	
 	currentScene = load("res://Scenes/TitleScene.tscn").instance()
 	add_child(currentScene)
 	var playButton = currentScene.get_node("CenterContainer2/Button")

@@ -149,7 +149,7 @@ text = "Play Again"
 autostart = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.001
+wait_time = 0.05
 
 [node name="ShotAnimationTime" type="Timer" parent="."]
 wait_time = 0.5

@@ -1,0 +1,606 @@
+[
+  {
+    "type": "gunslinger",
+    "name": "Grandma",
+    "mods": [
+      {
+        "type": "reaction_time",
+        "mod": false,
+        "value": 1.5
+      },
+      {
+        "type": "size",
+        "mod": false,
+        "value": 0.5
+      },
+      {
+        "type": "accuracy",
+        "mod": true,
+        "value": 1.25
+      }
+    ]
+  },
+  {
+    "type": "gunslinger",
+    "name": "Average Joe",
+    "mods": [
+      {
+        "type": "reaction_time",
+        "mod": false,
+        "value": 0.8
+      },
+      {
+        "type": "size",
+        "mod": false,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "type": "gunslinger",
+    "name": "Coyote",
+    "mods": [
+      {
+        "type": "reaction_time",
+        "mod": false,
+        "value": 0.3
+      },
+      {
+        "type": "size",
+        "mod": false,
+        "value": 1.25
+      }
+    ]
+  },
+  {
+    "type": "gunslinger",
+    "name": "Natural Learner",
+    "mods": [
+      {
+        "type": "reaction_time",
+        "mod": false,
+        "value": 1.2
+      },
+      {
+        "type": "size",
+        "mod": false,
+        "value": 1.2
+      },
+      {
+        "type": "accuracy",
+        "mod": true,
+        "value": 0.95
+      },
+      {
+        "type": "reload_time",
+        "mod": true,
+        "value": 0.95
+      },
+      {
+        "type": "repair_time",
+        "mod": true,
+        "value": 0.95
+      }
+    ]
+  },
+  {
+    "type": "gunslinger",
+    "name": "Mr. Firm Hands",
+    "mods": [
+      {
+        "type": "reaction_time",
+        "mod": false,
+        "value": 1
+      },
+      {
+        "type": "size",
+        "mod": false,
+        "value": 1
+      },
+      {
+        "type": "accuracy",
+        "mod": true,
+        "value": 0.95
+      }
+    ]
+  },
+  {
+    "type": "background",
+    "name": "Marksman",
+    "mods": [
+      {
+        "type": "accuracy",
+        "mod": false,
+        "value": 1.33
+      },
+      {
+        "type": "reload_time",
+        "mod": true,
+        "value": 2
+      },
+      {
+        "type": "repair_time",
+        "mod": true,
+        "value": 2
+      }
+    ]
+  },
+  {
+    "type": "background",
+    "name": "Sheriff",
+    "mods": [
+      {
+        "type": "accuracy",
+        "mod": false,
+        "value": 2
+      },
+      {
+        "type": "reload_time",
+        "mod": true,
+        "value": 1
+      },
+      {
+        "type": "repair_time",
+        "mod": true,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "type": "background",
+    "name": "Gunsmith",
+    "mods": [
+      {
+        "type": "accuracy",
+        "mod": false,
+        "value": 2.5
+      },
+      {
+        "type": "reload_time",
+        "mod": true,
+        "value": 0.5
+      },
+      {
+        "type": "repair_time",
+        "mod": true,
+        "value": 0.5
+      },
+      {
+        "type": "fail_chance",
+        "mod": true,
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "type": "background",
+    "name": "Native American",
+    "mods": [
+      {
+        "type": "accuracy",
+        "mod": false,
+        "value": 1.33
+      },
+      {
+        "type": "reload_time",
+        "mod": true,
+        "value": 1.2
+      },
+      {
+        "type": "repair_time",
+        "mod": true,
+        "value": 5
+      }
+    ]
+  },
+  {
+    "type": "background",
+    "name": "Bandit",
+    "mods": [
+      {
+        "type": "accuracy",
+        "mod": false,
+        "value": 2.22
+      },
+      {
+        "type": "reload_time",
+        "mod": true,
+        "value": 1
+      },
+      {
+        "type": "repair_time",
+        "mod": true,
+        "value": 1
+      },
+      {
+        "type": "reaction_time",
+        "mod": true,
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "type": "weapon",
+    "name": "Low Cal. Revolver",
+    "mods": [
+      {
+        "type": "rate_of_fire",
+        "mod": false,
+        "value": 2
+      },
+      {
+        "type": "ammo_capacity",
+        "mod": false,
+        "value": 6
+      },
+      {
+        "type": "reload_time",
+        "mod": false,
+        "value": 8
+      },
+      {
+        "type": "bullet_speed",
+        "mod": false,
+        "value": 0.5
+      },
+      {
+        "type": "fail_chance",
+        "mod": false,
+        "value": 0.2
+      },
+      {
+        "type": "repair_time",
+        "mod": false,
+        "value": 3
+      },
+      {
+        "type": "accuracy",
+        "mod": true,
+        "value": 1.1
+      }
+    ]
+  },
+  {
+    "type": "weapon",
+    "name": "High Cal. Revolver",
+    "mods": [
+      {
+        "type": "rate_of_fire",
+        "mod": false,
+        "value": 1
+      },
+      {
+        "type": "ammo_capacity",
+        "mod": false,
+        "value": 5
+      },
+      {
+        "type": "reload_time",
+        "mod": false,
+        "value": 8
+      },
+      {
+        "type": "bullet_speed",
+        "mod": false,
+        "value": 0.2
+      },
+      {
+        "type": "fail_chance",
+        "mod": false,
+        "value": 0.2
+      },
+      {
+        "type": "repair_time",
+        "mod": false,
+        "value": 3
+      },
+      {
+        "type": "accuracy",
+        "mod": true,
+        "value": 1.1
+      }
+    ]
+  },
+  {
+    "type": "weapon",
+    "name": "Chain Revolver",
+    "mods": [
+      {
+        "type": "rate_of_fire",
+        "mod": false,
+        "value": 2
+      },
+      {
+        "type": "ammo_capacity",
+        "mod": false,
+        "value": 18
+      },
+      {
+        "type": "reload_time",
+        "mod": false,
+        "value": 24
+      },
+      {
+        "type": "bullet_speed",
+        "mod": false,
+        "value": 0.5
+      },
+      {
+        "type": "fail_chance",
+        "mod": false,
+        "value": 0.33
+      },
+      {
+        "type": "repair_time",
+        "mod": false,
+        "value": 3
+      },
+      {
+        "type": "accuracy",
+        "mod": true,
+        "value": 1.1
+      }
+    ]
+  },
+  {
+    "type": "weapon",
+    "name": "Pirate Blunderbuss",
+    "mods": [
+      {
+        "type": "rate_of_fire",
+        "mod": false,
+        "value": 0
+      },
+      {
+        "type": "ammo_capacity",
+        "mod": false,
+        "value": 1
+      },
+      {
+        "type": "reload_time",
+        "mod": false,
+        "value": 4
+      },
+      {
+        "type": "bullet_speed",
+        "mod": false,
+        "value": 0.2
+      },
+      {
+        "type": "fail_chance",
+        "mod": false,
+        "value": 0.1
+      },
+      {
+        "type": "repair_time",
+        "mod": false,
+        "value": 5
+      },
+      {
+        "type": "accuracy",
+        "mod": true,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "type": "weapon",
+    "name": "Sniper",
+    "mods": [
+      {
+        "type": "rate_of_fire",
+        "mod": false,
+        "value": 0
+      },
+      {
+        "type": "ammo_capacity",
+        "mod": false,
+        "value": 1
+      },
+      {
+        "type": "reload_time",
+        "mod": false,
+        "value": 3
+      },
+      {
+        "type": "bullet_speed",
+        "mod": false,
+        "value": 0.1
+      },
+      {
+        "type": "fail_chance",
+        "mod": false,
+        "value": 0.1
+      },
+      {
+        "type": "repair_time",
+        "mod": false,
+        "value": 5
+      },
+      {
+        "type": "accuracy",
+        "mod": true,
+        "value": 0.67
+      },
+      {
+        "type": "reaction_time",
+        "mod": true,
+        "value": 2
+      }
+    ]
+  },
+  {
+    "type": "weapon",
+    "name": "Bow",
+    "mods": [
+      {
+        "type": "rate_of_fire",
+        "mod": false,
+        "value": 0
+      },
+      {
+        "type": "ammo_capacity",
+        "mod": false,
+        "value": 1
+      },
+      {
+        "type": "reload_time",
+        "mod": false,
+        "value": 1.5
+      },
+      {
+        "type": "bullet_speed",
+        "mod": false,
+        "value": 2
+      },
+      {
+        "type": "fail_chance",
+        "mod": false,
+        "value": 0
+      },
+      {
+        "type": "repair_time",
+        "mod": false,
+        "value": 0
+      },
+      {
+        "type": "accuracy",
+        "mod": true,
+        "value": 1.25
+      }
+    ]
+  },
+  {
+    "type": "weapon",
+    "name": "Rifle",
+    "mods": [
+      {
+        "type": "rate_of_fire",
+        "mod": false,
+        "value": 0.5
+      },
+      {
+        "type": "ammo_capacity",
+        "mod": false,
+        "value": 6
+      },
+      {
+        "type": "reload_time",
+        "mod": false,
+        "value": 8
+      },
+      {
+        "type": "bullet_speed",
+        "mod": false,
+        "value": 0.1
+      },
+      {
+        "type": "fail_chance",
+        "mod": false,
+        "value": 0.2
+      },
+      {
+        "type": "repair_time",
+        "mod": false,
+        "value": 3
+      },
+      {
+        "type": "accuracy",
+        "mod": true,
+        "value": 1
+      },
+      {
+        "type": "reaction_time",
+        "mod": true,
+        "value": 1.2
+      }
+    ]
+  },
+  {
+    "type": "weapon",
+    "name": "Shotgun",
+    "mods": [
+      {
+        "type": "rate_of_fire",
+        "mod": false,
+        "value": 0.67
+      },
+      {
+        "type": "ammo_capacity",
+        "mod": false,
+        "value": 8
+      },
+      {
+        "type": "reload_time",
+        "mod": false,
+        "value": 10
+      },
+      {
+        "type": "bullet_speed",
+        "mod": false,
+        "value": 1
+      },
+      {
+        "type": "fail_chance",
+        "mod": false,
+        "value": 0.2
+      },
+      {
+        "type": "repair_time",
+        "mod": false,
+        "value": 5
+      },
+      {
+        "type": "accuracy",
+        "mod": true,
+        "value": 0.85
+      },
+      {
+        "type": "reaction_time",
+        "mod": true,
+        "value": 1.2
+      }
+    ]
+  },
+  {
+    "type": "weapon",
+    "name": "Hand Shotgun",
+    "mods": [
+      {
+        "type": "rate_of_fire",
+        "mod": false,
+        "value": 5
+      },
+      {
+        "type": "ammo_capacity",
+        "mod": false,
+        "value": 2
+      },
+      {
+        "type": "reload_time",
+        "mod": false,
+        "value": 4
+      },
+      {
+        "type": "bullet_speed",
+        "mod": false,
+        "value": 1.2
+      },
+      {
+        "type": "fail_chance",
+        "mod": false,
+        "value": 0.25
+      },
+      {
+        "type": "repair_time",
+        "mod": false,
+        "value": 5
+      },
+      {
+        "type": "accuracy",
+        "mod": true,
+        "value": 0.85
+      }
+    ]
+  }
+]
