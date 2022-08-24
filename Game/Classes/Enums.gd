@@ -30,11 +30,11 @@ enum Stat{
 	FAIL_CHANCE
 }
 
-enum Operation{
-	SET
-	ADD
-	MULTIPLY
-}
+#enum Operation{
+#	SET
+#	ADD
+#	MULTIPLY
+#}
 
 enum PlayerState{
 	READY
@@ -43,4 +43,11 @@ enum PlayerState{
 	RELOADING
 	REPARING
 	DEAD
+}
+
+enum ItemTypes{
+	GUNSLINGER
+	BACKGROUND
+	WEAPON
+	ATTACHMENT
 }

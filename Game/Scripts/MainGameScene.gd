@@ -18,6 +18,9 @@ var randomAI = Player.new("Enemy")
 
 var itemsFile = File.new()
 var items:Array
+var gunslingers:Array
+var backgrounds:Array
+var weapons:Array
 
 
 func _ready():
@@ -25,6 +28,16 @@ func _ready():
 	itemsFile.open("res://items.json", itemsFile.READ)
 	items = parse_json(itemsFile.get_as_text())
 	itemsFile.close()
+	
+	for i in items:
+		var item = Item.new(i)
+		match item.type:
+			Enums.ItemTypes.GUNSLINGER:
+				gunslingers.append(item)
+			Enums.ItemTypes.BACKGROUND:
+				backgrounds.append(item)
+			Enums.ItemTypes.WEAPON:
+				weapons.append(item)
 	
 	currentScene = load("res://Scenes/TitleScene.tscn").instance()
 	add_child(currentScene)
@@ -51,8 +64,16 @@ func _on_thirdItem_pressed():
 	loadItemScene(3)
 
 func _on_confirmButton_pressed():
-	player.setStats(currentScene.item.statMods)
-	randomAI.setStats(itemsOnSale[rng.randi_range(0, itemsOnSale.size()-1)].statMods)
+	player.addItem(currentScene.item)
+	rng.randomize()
+	match currentScene.item.type:
+		Enums.ItemTypes.GUNSLINGER:
+			randomAI.addItem(gunslingers[rng.randi_range(0, gunslingers.size()-1)])
+		Enums.ItemTypes.BACKGROUND:
+			randomAI.addItem(backgrounds[rng.randi_range(0, backgrounds.size()-1)])
+		Enums.ItemTypes.WEAPON:
+			randomAI.addItem(weapons[rng.randi_range(0, weapons.size()-1)])
+	
 	if buyPhase%3 == 2:
 		loadShowdownScene()
 	else:
@@ -63,8 +84,19 @@ func _on_backButton_pressed():
 	currentScene = previousScene
 	add_child(currentScene)
 
+func _on_playAgainButton_pressed():
+	buyPhase = -1
+	player = Player.new("Player")
+	randomAI = Player.new("Enemy")
+	setWeatherOdds()
+	loadStoreScene()
 
-
+func _on_battleLogButton_pressed():
+	loadTextShowerScene(currentScene.showdownLog)
+func _on_yourItemsButton_pressed():
+	loadTextShowerScene(player.toString())
+func _on_enemyItemsButton_pressed():
+	loadTextShowerScene(randomAI.toString())
 
 
 
@@ -110,7 +142,26 @@ func loadShowdownScene():
 		weather = Enums.Weather.RAIN
 	currentScene.setup(weather, player, randomAI)
 	add_child(currentScene)
+	
+	
+	var yourItemsButton = currentScene.get_node("VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/VBoxContainer/YourItemsButton")
+	yourItemsButton.connect("pressed", self, "_on_yourItemsButton_pressed")
+	var enemyItemsButton = currentScene.get_node("VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/VBoxContainer/EnemyItemsButton")
+	enemyItemsButton.connect("pressed", self, "_on_enemyItemsButton_pressed")
+	var battleLogButton = currentScene.get_node("VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/VBoxContainer/BattleLogButton")
+	battleLogButton.connect("pressed", self, "_on_battleLogButton_pressed")
+	var playAgainButton = currentScene.get_node("VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/VBoxContainer/PlayAgainButton")
+	playAgainButton.connect("pressed", self, "_on_playAgainButton_pressed")
 
+func loadTextShowerScene(text:String):
+	remove_child(currentScene)
+	previousScene = currentScene
+	currentScene = load("res://Scenes/TextShower.tscn").instance()
+	currentScene.setup(text)
+	add_child(currentScene)
+	
+	var backButton = currentScene.get_node("MarginContainer/VBoxContainer/CenterContainer/BackButton")
+	backButton.connect("pressed", self, "_on_backButton_pressed")
 
 
 func setWeatherOdds():
@@ -121,32 +172,17 @@ func setWeatherOdds():
 
 func advanceBuyPhase():
 	buyPhase += 1
+	randomize()
 	match buyPhase:
 		Enums.BuyPhases.GUNSLINGER:
 			buyPhaseName = "a gunslinger"
-			itemsOnSale = testGunslingers
+			gunslingers.shuffle()
+			itemsOnSale = gunslingers
 		Enums.BuyPhases.BACKGROUNG:
 			buyPhaseName = "a background"
-			itemsOnSale = testBackgrounds
+			backgrounds.shuffle()
+			itemsOnSale = backgrounds
 		Enums.BuyPhases.WEAPON:
 			buyPhaseName = "a weapon"
-			itemsOnSale = testWeapons
-
-
-
-
-
-var lightfootMods = [StatMod.new("- Size: 0.5 standard area", Enums.Stat.SIZE, Enums.Operation.SET, 0.5), StatMod.new("- Reaction time: 2 seconds", Enums.Stat.REACTION_TIME, Enums.Operation.SET, 2)]
-var averageMods = [StatMod.new("- Size: 1 standard area", Enums.Stat.SIZE, Enums.Operation.SET, 1), StatMod.new("- Reaction time: 0.5 seconds", Enums.Stat.REACTION_TIME, Enums.Operation.SET, 0.5)]
-var bigGuyMods = [StatMod.new("- Size: 1.5 standard area", Enums.Stat.SIZE, Enums.Operation.SET, 1.5), StatMod.new("- Reaction time: 1 seconds", Enums.Stat.REACTION_TIME, Enums.Operation.SET, 1)]
-var testGunslingers = [Item.new("Lightfoot", lightfootMods), Item.new("Average", averageMods), Item.new("Big Guy", bigGuyMods)]
-
-var gunsmithMods = [StatMod.new("- Accuracy: within 4 standard area", Enums.Stat.ACCURACY, Enums.Operation.SET, 4), StatMod.new("- Reload Speed modifier: x0.25", Enums.Stat.RELOAD_TIME, Enums.Operation.SET, 0.25), StatMod.new("- Repair Time modifier: x0.25", Enums.Stat.REPAIR_TIME, Enums.Operation.SET, 0.25)]
-var regularMods = [StatMod.new("- Accuracy: within 2 standard area", Enums.Stat.ACCURACY, Enums.Operation.SET, 2), StatMod.new("- Reload Speed modifier: x1", Enums.Stat.RELOAD_TIME, Enums.Operation.SET, 1), StatMod.new("- Repair Time modifier: x1", Enums.Stat.REPAIR_TIME, Enums.Operation.SET, 1)]
-var shooterMods = [StatMod.new("- Accuracy: within 1.2 standard area", Enums.Stat.ACCURACY, Enums.Operation.SET, 1.2), StatMod.new("- Reload Speed modifier: x2", Enums.Stat.RELOAD_TIME, Enums.Operation.SET, 2), StatMod.new("- Repair Time modifier: x2", Enums.Stat.REPAIR_TIME, Enums.Operation.SET, 2)]
-var testBackgrounds = [Item.new("Gunsmith", gunsmithMods), Item.new("Regular", regularMods), Item.new("Shooter", shooterMods)]
-
-var lowCaliberRevolverMods = [StatMod.new("- Rate of Fire: 2 rounds per second", Enums.Stat.ROF, Enums.Operation.SET, 2), StatMod.new("- Reload time: 9 seconds", Enums.Stat.RELOAD_TIME, Enums.Operation.MULTIPLY, 9), StatMod.new("- Ammo Capacity: 6 rounds", Enums.Stat.AMMO_CAPACITY, Enums.Operation.SET, 6), StatMod.new("- Bullet Speed: 0.5 seconds", Enums.Stat.BULLET_SPEED, Enums.Operation.SET, 0.5), StatMod.new("- Fail chance: 10%", Enums.Stat.FAIL_CHANCE, Enums.Operation.SET, 0.1), StatMod.new("- Repair time: 2 seconds", Enums.Stat.REPAIR_TIME, Enums.Operation.MULTIPLY, 2), StatMod.new("- Accuracy modifier: x3", Enums.Stat.ACCURACY, Enums.Operation.MULTIPLY, 3)]
-var highCaliberRevolverMods = [StatMod.new("- Rate of Fire: 1 rounds per second", Enums.Stat.ROF, Enums.Operation.SET, 1), StatMod.new("- Reload time: 12 seconds", Enums.Stat.RELOAD_TIME, Enums.Operation.MULTIPLY, 12), StatMod.new("- Ammo Capacity: 5 rounds", Enums.Stat.AMMO_CAPACITY, Enums.Operation.SET, 5), StatMod.new("- Bullet Speed: 0.1 seconds", Enums.Stat.BULLET_SPEED, Enums.Operation.SET, 0.1), StatMod.new("- Fail chance: 10%", Enums.Stat.FAIL_CHANCE, Enums.Operation.SET, 0.1), StatMod.new("- Repair time: 3 seconds", Enums.Stat.REPAIR_TIME, Enums.Operation.MULTIPLY, 3), StatMod.new("- Accuracy modifier: x2", Enums.Stat.ACCURACY, Enums.Operation.MULTIPLY, 2)]
-var handShotgunMods = [StatMod.new("- Rate of Fire: 0.33 rounds per second", Enums.Stat.ROF, Enums.Operation.SET, 0.33), StatMod.new("- Reload time: 5 seconds", Enums.Stat.RELOAD_TIME, Enums.Operation.MULTIPLY, 5), StatMod.new("- Ammo Capacity: 2 rounds", Enums.Stat.AMMO_CAPACITY, Enums.Operation.SET, 2), StatMod.new("- Bullet Speed: 1 second", Enums.Stat.BULLET_SPEED, Enums.Operation.SET, 1), StatMod.new("- Fail chance: 20%", Enums.Stat.FAIL_CHANCE, Enums.Operation.SET, 0.2), StatMod.new("- Repair time: 3 seconds", Enums.Stat.REPAIR_TIME, Enums.Operation.MULTIPLY, 3), StatMod.new("- Accuracy modifier: x1", Enums.Stat.ACCURACY, Enums.Operation.MULTIPLY, 1)]
-var testWeapons = [Item.new("Low Caliber Revolver", lowCaliberRevolverMods), Item.new("High Caliber Revolver", highCaliberRevolverMods), Item.new("Hand Shotgun", handShotgunMods)]
+			weapons.shuffle()
+			itemsOnSale = weapons

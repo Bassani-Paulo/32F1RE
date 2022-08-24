@@ -3,16 +3,17 @@ extends Object
 class_name Player
 
 var name:String
+var items:Array
 
-var size:float
-var reactionTime:float
-var reloadTime:float
-var repairTime:float
-var accuracy:float
-var rof:float
-var ammoCapacity:int
-var bulletSpeed:float
-var failChance:float
+var size:float = 1
+var reactionTime:float = 1
+var reloadTime:float = 1
+var repairTime:float = 1
+var accuracy:float = 1
+var rof:float = 1
+var ammoCapacity:int = 1
+var bulletSpeed:float = 1
+var failChance:float = 1
 #var aimTime:float ???
 
 var playerState:int
@@ -38,100 +39,52 @@ func setup():
 	ammoRemaining = ammoCapacity
 
 func setStat(statMod:StatMod):
-	match statMod.stat:
+	match statMod.type:
 		Enums.Stat.SIZE:
-			match statMod.operation:
-				Enums.Operation.SET:
-					size = statMod.value
-				Enums.Operation.ADD:
-					size += statMod.value
-				Enums.Operation.MULTIPLY:
-					size *= statMod.value
+			size *= statMod.value
 		Enums.Stat.REACTION_TIME:
-			match statMod.operation:
-				Enums.Operation.SET:
-					reactionTime = statMod.value
-				Enums.Operation.ADD:
-					reactionTime += statMod.value
-				Enums.Operation.MULTIPLY:
-					reactionTime *= statMod.value
+			reactionTime *= statMod.value
 		Enums.Stat.RELOAD_TIME:
-			match statMod.operation:
-				Enums.Operation.SET:
-					reloadTime = statMod.value
-				Enums.Operation.ADD:
-					reloadTime += statMod.value
-				Enums.Operation.MULTIPLY:
-					reloadTime *= statMod.value
+			reloadTime *= statMod.value
 		Enums.Stat.REPAIR_TIME:
-			match statMod.operation:
-				Enums.Operation.SET:
-					repairTime = statMod.value
-				Enums.Operation.ADD:
-					repairTime += statMod.value
-				Enums.Operation.MULTIPLY:
-					repairTime *= statMod.value
+			repairTime *= statMod.value
 		Enums.Stat.ACCURACY:
-			match statMod.operation:
-				Enums.Operation.SET:
-					accuracy = statMod.value
-				Enums.Operation.ADD:
-					accuracy += statMod.value
-				Enums.Operation.MULTIPLY:
-					accuracy *= statMod.value
+			accuracy *= statMod.value
 		Enums.Stat.ROF:
-			match statMod.operation:
-				Enums.Operation.SET:
-					rof = statMod.value
-				Enums.Operation.ADD:
-					rof += statMod.value
-				Enums.Operation.MULTIPLY:
-					rof *= statMod.value
+			rof *= statMod.value
 		Enums.Stat.AMMO_CAPACITY:
-			match statMod.operation:
-				Enums.Operation.SET:
-					ammoCapacity = int(statMod.value)
-				Enums.Operation.ADD:
-					ammoCapacity += int(statMod.value)
-				Enums.Operation.MULTIPLY:
-					ammoCapacity *= int(statMod.value)
+			ammoCapacity *= int(statMod.value)
 		Enums.Stat.BULLET_SPEED:
-			match statMod.operation:
-				Enums.Operation.SET:
-					bulletSpeed = statMod.value
-				Enums.Operation.ADD:
-					bulletSpeed += statMod.value
-				Enums.Operation.MULTIPLY:
-					bulletSpeed *= statMod.value
+			bulletSpeed *= statMod.value
 		Enums.Stat.FAIL_CHANCE:
-			match statMod.operation:
-				Enums.Operation.SET:
-					failChance = statMod.value
-				Enums.Operation.ADD:
-					failChance += statMod.value
-				Enums.Operation.MULTIPLY:
-					failChance *= statMod.value
+			failChance *= statMod.value
 
 
-func setStats(statMods:Array):
-	for statMod in statMods:
+func addItem(item:Item):
+	items.append(item)
+	for statMod in item.statMods:
 		setStat(statMod)
 
 
-func printStats():
-	print()
-	print()
-	print("Name: " + name)
-	print()
-	print("Size: %.2f   " % size + "standard area")
-	print("Reaction time: %.2f   " % reactionTime + "seconds")
-	print("Reload time: %.2f   " % reloadTime + "seconds")
-	print("Repair time: %.2f   " % repairTime + "seconds")
-	print("Accuracy: %.2f   " % accuracy + "standard area")
-	print("Rate of Fire: %.2f   " % rof + "rounds per second")
-	print("Ammo capacity: %d   " % ammoCapacity + "rounds")
-	print("Bullet speed: %.2f   " % bulletSpeed + "seconds")
-	print("Fail chance: %.2f" % failChance + "%")
+func toString():
+	var text = "\n"
+	text += "[center][b]" + name + "'s Build[/b][/center]\n\n"
+	text += " Items:\n"
+	for item in items:
+		text += " \t" + item.name + "\n"
+	text += "\n"
+	text += " Result stats:\n"
+	text += " \tSize: [color=maroon]%.2f[/color]  " %size + "standard area\n"
+	text += " \tReaction time: [color=maroon]%.2f[/color]  " %reactionTime + "seconds\n"
+	text += " \tAccuracy: [color=maroon]%.2f[/color]  " %accuracy + "standard area\n"
+	text += " \tRate of Fire: [color=maroon]%.2f[/color]  " %rof + "rounds per second\n"
+	text += " \tAmmo capacity: [color=maroon]%.d[/color]  " %ammoCapacity + "rounds\n"
+	text += " \tReload time: [color=maroon]%.2f[/color]  " %reloadTime + "seconds\n"
+	text += " \tFail chance: [color=maroon]%.2f[/color] " %failChance + "%\n"
+	text += " \tRepair time: [color=maroon]%.2f[/color]  " %repairTime + "seconds\n"
+	text += " \tBullet speed: [color=maroon]%.2f[/color]  " %bulletSpeed + "seconds\n"
+	
+	return text
 	
 	
 

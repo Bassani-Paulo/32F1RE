@@ -115,33 +115,45 @@ __meta__ = {
 }
 
 [node name="YourItemsButton" type="Button" parent="VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/VBoxContainer"]
-margin_right = 209.0
+margin_left = 4.0
+margin_right = 204.0
 margin_bottom = 38.0
-rect_min_size = Vector2( 150, 0 )
+rect_min_size = Vector2( 240, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 4 )
-text = "Your Items"
+text = "Your Build"
 
 [node name="EnemyItemsButton" type="Button" parent="VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/VBoxContainer"]
+margin_left = 4.0
 margin_top = 48.0
-margin_right = 209.0
+margin_right = 204.0
 margin_bottom = 86.0
-rect_min_size = Vector2( 150, 0 )
+rect_min_size = Vector2( 240, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 4 )
-text = "Enemy Items"
+text = "Enemy's Build"
 
 [node name="BattleLogButton" type="Button" parent="VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/VBoxContainer"]
+margin_left = 4.0
 margin_top = 96.0
-margin_right = 209.0
+margin_right = 204.0
 margin_bottom = 134.0
-rect_min_size = Vector2( 150, 0 )
+rect_min_size = Vector2( 240, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 4 )
 text = "Battle Log"
 
 [node name="PlayAgainButton" type="Button" parent="VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/VBoxContainer"]
+margin_left = 4.0
 margin_top = 144.0
-margin_right = 209.0
+margin_right = 204.0
 margin_bottom = 182.0
-rect_min_size = Vector2( 150, 0 )
+rect_min_size = Vector2( 240, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 4 )
 text = "Play Again"
 

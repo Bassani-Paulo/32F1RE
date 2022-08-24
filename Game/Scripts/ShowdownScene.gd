@@ -10,7 +10,7 @@ var randomAI:Player
 var preTime = 3
 var time = 0.0
 
-var showdownLog = ""
+var showdownLog = "\n"
 
 var rng = RandomNumberGenerator.new()
 
@@ -50,106 +50,108 @@ func _on_Timer_timeout():
 	if player.deathTimeRemaining >= 0:
 		player.deathTimeRemaining -= TU
 		if player.deathTimeRemaining <= 0:
-			showdownLog += String(time) + ": " + player.name + " died.\n"
+			showdownLog += "  %.2f" %time + ": " + player.name + " died.\n"
 			get_node("Timer").stop()
 			endGame(false)
+			return
 	
 	if randomAI.deathTimeRemaining >= 0:
 		randomAI.deathTimeRemaining -= TU
 		if randomAI.deathTimeRemaining <= 0:
-			showdownLog += String(time) + ": " + randomAI.name + " died.\n"
+			showdownLog += "  %.2f" %time + ": " + randomAI.name + " died.\n"
 			get_node("Timer").stop()
-			endGame(false)
+			endGame(true)
+			return
 	
 	match player.playerState:
 		Enums.PlayerState.REACTING:
 			player.reactionTimeRemaining -= TU
 			if player.reactionTimeRemaining <= 0:
 				player.playerState = Enums.PlayerState.READY
-				showdownLog += String(time) + ": " + player.name + " pulls the trigger.\n"
+				showdownLog += "  %.2f" %time + ": " + player.name + " pulls the trigger.\n"
 		Enums.PlayerState.REPARING:
 			player.repairTimeRemaining -= TU
 			if player.repairTimeRemaining <= 0:
 				player.playerState = Enums.PlayerState.READY
-				showdownLog += String(time) + ": " + player.name + " pulls the trigger.\n"
+				showdownLog += "  %.2f" %time + ": " + player.name + " pulls the trigger.\n"
 		Enums.PlayerState.RELOADING:
 			player.reloadTimeRemaining -= TU
 			if player.reloadTimeRemaining <= 0:
 				player.playerState = Enums.PlayerState.READY
 				player.ammoRemaining = player.ammoCapacity
-				showdownLog += String(time) + ": " + player.name + " pulls the trigger.\n"
+				showdownLog += "  %.2f" %time + ": " + player.name + " pulls the trigger.\n"
 		Enums.PlayerState.SHOOTING:
 			player.rofTimeRemaining -= TU
 			if player.rofTimeRemaining <= 0:
 				player.playerState = Enums.PlayerState.READY
-				showdownLog += String(time) + ": " + player.name + " pulls the trigger.\n"
+				showdownLog += "  %.2f" %time + ": " + player.name + " pulls the trigger.\n"
 		Enums.PlayerState.READY:
 			rng.randomize()
 			if rng.randf() <= player.failChance:
 				player.playerState = Enums.PlayerState.REPARING
-				player.repairTimeRemaining = player.repairTime
-				showdownLog += String(time) + ": " + player.name + "'s gun jammed.\n"
+				player.repairTimeRemaining = player.repairTime - TU
+				showdownLog += "  %.2f" %time + ": " + player.name + "'s gun jammed.\n"
 			else:
 				shotAnimation()
 				player.ammoRemaining -= 1
 				rng.randomize()
 				if rng.randf() <= randomAI.size/player.accuracy:
-					showdownLog += String(time) + ": " + player.name + " shot correctly.\n"
-					randomAI.deathTimeRemaining = player.bulletSpeed
+					showdownLog += "  %.2f" %time + ": " + player.name + " shot correctly.\n"
+					randomAI.deathTimeRemaining = player.bulletSpeed - TU
 				else:
-					showdownLog += String(time) + ": " + player.name + " misses.\n"
+					showdownLog += "  %.2f" %time + ": " + player.name + " misses.\n"
 				if player.ammoRemaining <= 0:
 					player.playerState = Enums.PlayerState.RELOADING
-					player.reloadTimeRemaining = player.reloadTime
-					showdownLog += String(time) + ": " + player.name + " began reloading.\n"
+					player.reloadTimeRemaining = player.reloadTime - TU
+					showdownLog += "  %.2f" %time + ": " + player.name + " began reloading.\n"
 				else:
 					player.playerState = Enums.PlayerState.SHOOTING
-					player.rofTimeRemaining = 1.0/player.rof
+					player.rofTimeRemaining = 1.0/player.rof - TU
 	
 	match randomAI.playerState:
 		Enums.PlayerState.REACTING:
 			randomAI.reactionTimeRemaining -= TU
 			if randomAI.reactionTimeRemaining <= 0:
 				randomAI.playerState = Enums.PlayerState.READY
-				showdownLog += String(time) + ": " + randomAI.name + " pulls the trigger.\n"
+				showdownLog += "  %.2f" %time + ": " + randomAI.name + " pulls the trigger.\n"
 		Enums.PlayerState.REPARING:
 			randomAI.repairTimeRemaining -= TU
 			if randomAI.repairTimeRemaining <= 0:
 				randomAI.playerState = Enums.PlayerState.READY
-				showdownLog += String(time) + ": " + randomAI.name + " pulls the trigger.\n"
+				showdownLog += "  %.2f" %time + ": " + randomAI.name + " pulls the trigger.\n"
 		Enums.PlayerState.RELOADING:
 			randomAI.reloadTimeRemaining -= TU
 			if randomAI.reloadTimeRemaining <= 0:
 				randomAI.playerState = Enums.PlayerState.READY
 				randomAI.ammoRemaining = randomAI.ammoCapacity
-				showdownLog += String(time) + ": " + randomAI.name + " pulls the trigger.\n"
+				showdownLog += "  %.2f" %time + ": " + randomAI.name + " pulls the trigger.\n"
 		Enums.PlayerState.SHOOTING:
 			randomAI.rofTimeRemaining -= TU
 			if randomAI.rofTimeRemaining <= 0:
 				randomAI.playerState = Enums.PlayerState.READY
-				showdownLog += String(time) + ": " + randomAI.name + " pulls the trigger.\n"
+				showdownLog += "  %.2f" %time + ": " + randomAI.name + " pulls the trigger.\n"
 		Enums.PlayerState.READY:
 			rng.randomize()
 			if rng.randf() <= randomAI.failChance:
 				randomAI.playerState = Enums.PlayerState.REPARING
-				randomAI.repairTimeRemaining = randomAI.repairTime
-				showdownLog += String(time) + ": " + randomAI.name + "'s gun jammed.\n"
+				randomAI.repairTimeRemaining = randomAI.repairTime - TU
+				showdownLog += "  %.2f" %time + ": " + randomAI.name + "'s gun jammed.\n"
 			else:
 				shotAnimation()
 				randomAI.ammoRemaining -= 1
 				rng.randomize()
 				if rng.randf() <= player.size/randomAI.accuracy:
-					showdownLog += String(time) + ": " + randomAI.name + " shot correctly.\n"
-					player.deathTimeRemaining = randomAI.bulletSpeed
+					showdownLog += "  %.2f" %time + ": " + randomAI.name + " shot correctly.\n"
+					player.deathTimeRemaining = randomAI.bulletSpeed - TU
 				else:
-					showdownLog += String(time) + ": " + randomAI.name + " misses.\n"
+					showdownLog += "  %.2f" %time + ": " + randomAI.name + " misses.\n"
 				if randomAI.ammoRemaining <= 0:
 					randomAI.playerState = Enums.PlayerState.RELOADING
-					randomAI.reloadTimeRemaining = randomAI.reloadTime
-					showdownLog += String(time) + ": " + randomAI.name + " began reloading.\n"
+					randomAI.reloadTimeRemaining = randomAI.reloadTime - TU
+					showdownLog += "  %.2f" %time + ": " + randomAI.name + " began reloading.\n"
 				else:
 					randomAI.playerState = Enums.PlayerState.SHOOTING
-					randomAI.rofTimeRemaining = 1.0/randomAI.rof
+					randomAI.rofTimeRemaining = 1.0/randomAI.rof - TU
 
 
 func _on_PreTimer_timeout():
@@ -162,10 +164,12 @@ func _on_PreTimer_timeout():
 		get_node("Timer").start()
 
 func endGame(playerWon:bool):
-	player.printStats()
-	randomAI.printStats()
-	print("\n\n\n")
-	print(showdownLog)
+	get_node("VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/VBoxContainer").visible = true
+	get_node("VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/LogLabel").add_color_override("font_color", Color(1,1,1))
+	if playerWon:
+		get_node("VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/LogLabel").text = "You defeated the enemy!"
+	else:
+		get_node("VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/LogLabel").text = "The Enemy defeated you."
 
 func shotAnimation():
 	get_node("ColorRect").color = Color(1,1,1)
@@ -173,7 +177,6 @@ func shotAnimation():
 	rng.randomize()
 	get_node("VBoxContainer/CenterContainer/MarginContainer2/VBoxContainer2/LogLabel").text = shotSlangs[rng.randi_range(0,3)]
 	get_node("ShotAnimationTime").start()
-	print("animation")
 	
 
 
